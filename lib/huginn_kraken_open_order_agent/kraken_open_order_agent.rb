@@ -153,21 +153,20 @@ module Agents
             last_status = memory['last_status'].gsub("=>", ": ").gsub(": nil,", ": null,")
             last_status = JSON.parse(last_status)
             payload['result']['open'].each do | k, v |
-            if interpolated['debug'] == 'true'
-              log "last_status"
-              log last_status
-            end
               found = false
               last_status.each do | kbis, vbis|
-                if k == kbis && v == vbis
+#                log "#{k} #{kbis}"
+#                log "v #{v}"
+#                log "vbis #{vbis}"
+                if k == kbis
                   found = true
-                  if interpolated['debug'] == 'true'
-                    log "found is #{found}"
-                  end
                 end
               end
+              if interpolated['debug'] == 'true'
+                log "found is #{found}"
+              end
               if found == false
-                  create_event payload: v
+                create_event payload: v
               end
             end
           end
