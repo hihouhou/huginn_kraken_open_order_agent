@@ -155,9 +155,6 @@ module Agents
             payload['result']['open'].each do | k, v |
               found = false
               last_status.each do | kbis, vbis|
-#                log "#{k} #{kbis}"
-#                log "v #{v}"
-#                log "vbis #{vbis}"
                 if k == kbis
                   found = true
                 end
